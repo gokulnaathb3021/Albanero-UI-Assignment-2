@@ -1,0 +1,102 @@
+.addForm {
+  position: fixed;
+  width: 90%;
+  height: 90%;
+  background-color: aliceblue;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.labelAndInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelAndInput input {
+  border: 1.5px solid #03002e;
+  border-radius: 5px;
+}
+
+.labelAndInput select {
+  border: 1.5px solid #03002e;
+  border-radius: 5px;
+}
+
+.pair {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+
+.managerName {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-bottom: 2px;
+}
+
+.managersAndEmployees {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.managerAndEmployees {
+  background-color: #03002e;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.listElement {
+  list-style: none;
+}
+
+.addFormButtons {
+  color: #fff;
+  background-color: #4267b2;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.addFormButtons:hover {
+  background-color: lightyellow;
+  color: #03002e;
+}
+
+.saveOrDiscard {
+  display: flex;
+  gap: 10px;
+}
+
+.saveOrDiscard button:nth-of-type(2) {
+  border: none;
+  background-color: #f22952;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.saveOrDiscard button:nth-of-type(2):hover {
+  background-color: #ff0000;
+}
+
+@media screen and (max-width: 510px) {
+  .addForm {
+    padding: 0 10px;
+  }
+
+  .labelAndInput input {
+    height: 25px;
+  }
+  .labelAndInput select {
+    height: 25px;
+  }
+}
