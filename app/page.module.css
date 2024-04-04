@@ -69,16 +69,17 @@
 @media screen and (max-width: 510px) {
   .styledTable th {
     font-size: 10px;
-    padding: 3px;
+    padding: 2px;
+    font-weight: 400;
   }
 
   .styledTable td {
-    font-size: 10px;
-    padding: 2px;
+    font-size: 8.8px;
+    padding: 1px;
     font-weight: 500;
   }
 
   .buttons button {
-    padding: 3px 5px;
+    padding: 2px 4px;
   }
 }
