@@ -57,3 +57,26 @@ export function email_validation(email: string) {
   }
   return true;
 }
+
+export function validations(formData: FormData) {
+  let validationCount = 0;
+  let validationFailed = false;
+  formData.forEach((value, key) => {
+    if (!validationFailed && key !== "employee" && key !== "manager") {
+      if (key === "company_name") {
+        let cName = String(value);
+        if (!company_name_validation(cName)) validationFailed = true;
+        if (!validationFailed) validationCount += 1;
+      } else if (key === "contact_details") {
+        let pNum = String(value);
+        if (!phone_number_validation(pNum)) validationFailed = true;
+        if (!validationFailed) validationCount += 1;
+      } else if (key === "email_address") {
+        let email = String(value);
+        if (!email_validation(email)) validationFailed = true;
+        if (!validationFailed) validationCount += 1;
+      }
+    }
+  });
+  return validationCount;
+}

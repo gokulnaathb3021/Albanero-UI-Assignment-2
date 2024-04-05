@@ -108,7 +108,7 @@ export default function Home() {
         </thead>
         <tbody>
           {companies.map((company) => (
-            <tr>
+            <tr key={company.id}>
               <td>{company.company_name}</td>
               <td>{company.email_address}</td>
               <td>{company.contact_details}</td>

@@ -4,11 +4,7 @@ import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import styles from "./AddForm.module.css";
 import { v4 } from "uuid";
-import {
-  company_name_validation,
-  email_validation,
-  phone_number_validation,
-} from "@/utils/validation";
+import { validations } from "@/utils/validation";
 import { HomeProps, managersEmployees } from "@/utils/types_used";
 import { MdDelete } from "react-icons/md";
 
@@ -41,25 +37,8 @@ const AddForm: React.FC<AddFormProps> = ({ addCompany, closeAddForm }) => {
       head_count: 0,
       id: "",
     };
-    let validationCount = 0;
-    let validationFailed = false;
-    formData.forEach((value, key) => {
-      if (!validationFailed && key !== "employee" && key !== "manager") {
-        if (key === "company_name") {
-          let cName = String(value);
-          if (!company_name_validation(cName)) validationFailed = true;
-          if (!validationFailed) validationCount += 1;
-        } else if (key === "contact_details") {
-          let pNum = String(value);
-          if (!phone_number_validation(pNum)) validationFailed = true;
-          if (!validationFailed) validationCount += 1;
-        } else if (key === "email_address") {
-          let email = String(value);
-          if (!email_validation(email)) validationFailed = true;
-          if (!validationFailed) validationCount += 1;
-        }
-      }
-    });
+
+    let validationCount = validations(formData);
 
     if (validationCount === 3) {
       formData.forEach((value, key) => {
