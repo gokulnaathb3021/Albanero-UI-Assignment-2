@@ -4,18 +4,8 @@ import { useState } from "react";
 import AddForm from "./components/AddForm";
 import EditForm from "./components/EditForm";
 import styles from "./page.module.css";
+import { HomeProps } from "@/utils/types_used";
 
-type HomeProps = {
-  company_name: string;
-  email_address: string;
-  contact_details: string;
-  domains: string;
-  managers: {
-    [manager: string]: string[];
-  };
-  head_count: number;
-  id: string;
-};
 const defaultCompanyValue: HomeProps = {
   company_name: "",
   email_address: "",
@@ -83,6 +73,7 @@ export default function Home() {
 
   return (
     <div className={styles.landingPage}>
+      <h1 style={{ color: "white" }}>🖋️Manual Entry App📔</h1>
       <button
         className={styles.addButton}
         onClick={() => {

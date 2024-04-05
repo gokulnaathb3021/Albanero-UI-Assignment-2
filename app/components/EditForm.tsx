@@ -8,23 +8,8 @@ import {
   phone_number_validation,
 } from "@/utils/validation";
 import { v4 } from "uuid";
-
-type managersEmployees = {
-  [key: string]: string[];
-};
-
-type HomeProps = {
-  [key: string]: any;
-  company_name: string;
-  email_address: string;
-  contact_details: string;
-  domains: string;
-  managers: {
-    [manager: string]: string[];
-  };
-  head_count: number;
-  id: string;
-};
+import { HomeProps, managersEmployees } from "@/utils/types_used";
+import { MdDelete } from "react-icons/md";
 
 type EditFormProps = {
   details: HomeProps;
@@ -228,7 +213,7 @@ const EditForm: React.FC<EditFormProps> = ({
                     type="button"
                     onClick={() => removeEmployee(val, key)}
                   >
-                    🚮
+                    <MdDelete />
                   </button>
                 </li>
               ))}
