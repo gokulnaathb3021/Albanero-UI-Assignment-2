@@ -30,7 +30,8 @@ const EditForm: React.FC<EditFormProps> = ({
     e.preventDefault();
     if (Object.keys(employees).length === 0) {
       toast.error(
-        "There should atleast be one manager and atleast one employee under every manager!"
+        "There should atleast be one manager and atleast one employee under every manager!",
+        { duration: 4000 }
       );
       return;
     }
@@ -89,12 +90,14 @@ const EditForm: React.FC<EditFormProps> = ({
   function addEmployee() {
     let employeeName = employeeRef.current!.value;
     if (employeeName.length === 0) {
-      toast.error("Employee name is empty!");
+      toast.error("Employee name is empty!", { duration: 4000 });
       return;
     }
     let managerName = managerRef.current!.value;
     if (managerName.length === 0) {
-      toast.error(`Enter the name of ${employeeName}'s manager!`);
+      toast.error(`Enter the name of ${employeeName}'s manager!`, {
+        duration: 4000,
+      });
       return;
     }
 
@@ -111,7 +114,9 @@ const EditForm: React.FC<EditFormProps> = ({
       return employeesUnderManagers;
     });
     (document.getElementById("employee") as HTMLInputElement).value = "";
-    toast.success(`${employeeName} added under ${managerName}`);
+    toast.success(`${employeeName} added under ${managerName}`, {
+      duration: 4000,
+    });
   }
 
   const removeEmployee = (empName: string, mgrName: string) => {
