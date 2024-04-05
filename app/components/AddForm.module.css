@@ -93,10 +93,23 @@
     padding: 0 10px;
   }
 
+  .addForm h2 {
+    font-size: 20px;
+  }
+
+  .labelAndInput {
+    font-size: 12px;
+  }
   .labelAndInput input {
     height: 25px;
   }
   .labelAndInput select {
     height: 25px;
+  }
+  .pair {
+    gap: 10px;
+  }
+  .managerAndEmployees {
+    font-size: 13px;
   }
 }
