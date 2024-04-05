@@ -50,6 +50,11 @@
   height: fit-content;
 }
 
+.managerAndEmployees button {
+  cursor: pointer;
+  margin-left: 2px;
+}
+
 .listElement {
   list-style: none;
 }
@@ -116,4 +121,9 @@
   .saveOrDiscard {
     gap: 5px;
   }
+}
+
+.pair:nth-of-type(3) {
+  padding: 2px;
+  border: 2px solid blue;
 }
