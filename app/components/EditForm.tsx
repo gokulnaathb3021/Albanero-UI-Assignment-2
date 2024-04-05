@@ -43,6 +43,12 @@ const EditForm: React.FC<EditFormProps> = ({
 
   function saveChanges(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (Object.keys(employees).length === 0) {
+      toast.error(
+        "There should atleast be one manager and atleast one employee under every manager!"
+      );
+      return;
+    }
     const formData = new FormData(e.currentTarget);
     let company: HomeProps = {
       company_name: "",
@@ -122,6 +128,20 @@ const EditForm: React.FC<EditFormProps> = ({
     (document.getElementById("employee") as HTMLInputElement).value = "";
     toast.success(`${employeeName} added under ${managerName}`);
   }
+
+  const removeEmployee = (empName: string, mgrName: string) => {
+    let employeesUnderMgr = [...employees[mgrName]];
+    let idx = employeesUnderMgr.indexOf(empName);
+    employeesUnderMgr.splice(idx, 1);
+    let managersAndEmployees = { ...employees };
+    if (employeesUnderMgr.length === 0) {
+      delete managersAndEmployees[mgrName];
+      setEmployees(() => managersAndEmployees);
+    } else {
+      managersAndEmployees[mgrName] = employeesUnderMgr;
+      setEmployees(() => managersAndEmployees);
+    }
+  };
 
   useEffect(() => {
     setEmployees(() => details.managers);
@@ -204,6 +224,12 @@ const EditForm: React.FC<EditFormProps> = ({
               {value.map((val) => (
                 <li key={v4()} className={styles.listElement}>
                   {val}
+                  <button
+                    type="button"
+                    onClick={() => removeEmployee(val, key)}
+                  >
+                    🚮
+                  </button>
                 </li>
               ))}
             </div>

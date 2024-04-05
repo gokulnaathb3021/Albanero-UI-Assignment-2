@@ -124,6 +124,20 @@ const AddForm: React.FC<AddFormProps> = ({ addCompany, closeAddForm }) => {
     toast.success(`${employeeName} added under ${managerName}`);
   };
 
+  const removeEmployee = (empName: string, mgrName: string) => {
+    let employeesUnderMgr = [...employees[mgrName]];
+    let idx = employeesUnderMgr.indexOf(empName);
+    employeesUnderMgr.splice(idx, 1);
+    let managersAndEmployees = { ...employees };
+    if (employeesUnderMgr.length === 0) {
+      delete managersAndEmployees[mgrName];
+      setEmployees(() => managersAndEmployees);
+    } else {
+      managersAndEmployees[mgrName] = employeesUnderMgr;
+      setEmployees(() => managersAndEmployees);
+    }
+  };
+
   return (
     <div className={styles.addForm}>
       <form onSubmit={handleSubmit}>
@@ -191,6 +205,12 @@ const AddForm: React.FC<AddFormProps> = ({ addCompany, closeAddForm }) => {
               {value.map((val) => (
                 <li key={v4()} className={styles.listElement}>
                   {val}
+                  <button
+                    type="button"
+                    onClick={() => removeEmployee(val, key)}
+                  >
+                    🚮
+                  </button>
                 </li>
               ))}
             </div>
