@@ -89,7 +89,7 @@ export default function Home() {
           setShowAddForm(true);
         }}
       >
-        Add a company
+        Click to add a company
       </button>
       {showAddForm && (
         <AddForm addCompany={addCompany} closeAddForm={closeAddForm} />
